@@ -10,8 +10,7 @@
         "laravel/tinker": "^2.8",
         "laravel/telescope": "^4.17",
         "pusher/pusher-php-server": "^7.2",
-        "phpseclib/phpseclib": "^3.0",
-        "laravel-echo-server": "^1.6"
+        "phpseclib/phpseclib": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
