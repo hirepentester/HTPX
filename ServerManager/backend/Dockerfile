@@ -24,20 +24,19 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install -j$(nproc) \
     bcmath \
-    ctype \
-    fileinfo \
-    json \
     mbstring \
-    openssl \
     pdo \
     pdo_mysql \
-    tokenizer \
-    xml \
-    zip \
-    gd
+    zip
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) gd
 
 RUN pecl install redis && docker-php-ext-enable redis
-RUN pecl install ssh2 && docker-php-ext-enable ssh2
+
+RUN apt-get install -y libssh2-1 && \
+    pecl install ssh2-1.3.0 && \
+    docker-php-ext-enable ssh2
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
