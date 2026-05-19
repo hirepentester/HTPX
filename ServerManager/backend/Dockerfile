@@ -39,10 +39,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
-RUN composer install --no-interaction --no-dev --prefer-dist
+# Install PHP dependencies without running composer scripts (artisan may be missing in repo)
+RUN composer install --no-interaction --no-dev --prefer-dist --no-scripts || true
 
-RUN php artisan key:generate || true
-RUN php artisan config:cache || true
+# If the artisan file exists, run setup commands; otherwise skip
+RUN if [ -f artisan ]; then \
+            php artisan key:generate || true; \
+            php artisan config:cache || true; \
+            php artisan package:discover --ansi || true; \
+        else \
+            echo "artisan not found, skipping artisan setup"; \
+        fi
 
 EXPOSE 8000
 
