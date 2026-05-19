@@ -11,7 +11,7 @@
 - Configure servers through a web interface
 - Track CPU, Memory, Disk, and Network metrics
 
-## 🎯 Core Capabilities
+## Core Capabilities
 
 ### 1. Server Monitoring
 - **Real-time Metrics**: CPU, RAM, Disk, Network usage
@@ -81,7 +81,7 @@
 └──────────┘ └─────────┘ └───────────┘
 ```
 
-## 🚀 Tech Stack
+## Tech Stack
 
 **Backend**
 - Language: PHP 8.2+
@@ -106,7 +106,7 @@
 - Cache: Redis
 - Real-time: Pusher/Laravel Echo
 
-## 📊 Database Schema
+## Database Schema
 
 ### Core Tables
 
@@ -156,7 +156,7 @@ Internet → HTTPS → Nginx → Laravel
 4. Results sent back to frontend
 5. No passwords stored (key-based auth)
 
-## 📈 Data Flow
+## Data Flow
 
 ### Monitoring Data Collection
 ```
@@ -194,7 +194,7 @@ Execute: sudo ufw allow/deny
 Return status to frontend
 ```
 
-## 🔄 Key Workflows
+## Key Workflows
 
 ### Adding a Server
 1. Admin fills server form (IP, hostname, SSH credentials)
@@ -220,7 +220,7 @@ Return status to frontend
 5. Execute: echo 'user:password' | chpasswd
 6. Return success status
 
-## 🎨 UI Components
+## UI Components
 
 ### Main Views
 - **Login**: Authentication page
@@ -237,7 +237,7 @@ Return status to frontend
 - MetricChart: Data visualization
 - FirewallRuleForm: Rule configuration
 
-## 🔔 Alert System
+## Alert System
 
 ### Alert Types
 - **disk_full**: Disk space exceeded threshold
@@ -259,7 +259,7 @@ Return status to frontend
 - **Webhook**: HTTP POST to custom URL
 - **Real-time**: WebSocket to dashboard
 
-## 🔗 API Structure
+## API Structure
 
 ### Request Format
 ```
@@ -313,7 +313,7 @@ npm run dev
 - Use SSH keys exclusively
 - Enable rate limiting
 
-## 🎯 Use Cases
+## Use Cases
 
 ### System Administration
 - Monitor all servers from one dashboard

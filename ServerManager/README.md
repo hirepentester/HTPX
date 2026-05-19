@@ -2,7 +2,7 @@
 
 A modern, scalable alternative to Zabbix built with Laravel, MySQL, and Vue.js. Monitor, manage, and secure your Linux servers with ease.
 
-## 🚀 Features
+## Features
 
 - **Real-time Server Monitoring**: CPU, RAM, disk, network metrics
 - **Firewall Management**: Configure and monitor firewall rules
@@ -58,7 +58,7 @@ ServerManager/
 └── README.md
 ```
 
-## ⚙️ Installation
+## Installation
 
 ### Prerequisites
 - Docker & Docker Compose (recommended)
