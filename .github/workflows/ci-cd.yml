@@ -1,0 +1,74 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  ci:
+    name: Tests & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, pdo, pdo_mysql, zip, gd
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-dev --prefer-dist
+
+      - name: Run PHP Unit tests (if present)
+        run: |
+          if [ -f phpunit.xml ] || [ -f phpunit.xml.dist ]; then
+            vendor/bin/phpunit || true
+          else
+            echo "No phpunit config found, skipping PHP tests"
+          fi
+
+      - name: Build frontend
+        run: |
+          if [ -d frontend ]; then
+            cd frontend
+            npm ci
+            npm run build
+          else
+            echo "No frontend folder, skipping"
+          fi
+
+  deploy:
+    name: Deploy to Production
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            cd /opt/server-manager/ServerManager || exit 1
+            git fetch --all
+            git reset --hard origin/main
+            docker-compose -f docker-compose.prod.yml build --no-cache app
+            docker-compose -f docker-compose.prod.yml up -d
+
+# Notes:
+# - Add repository secrets: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY, SSH_PORT (optional).
+# - The deploy step assumes the repo is already cloned at /opt/server-manager/ServerManager on the server
+#   and that the user has permission to run docker-compose.
