@@ -80,7 +80,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 🖥️ Server Endpoints
+## Server Endpoints
 
 ### List All Servers
 ```
@@ -151,7 +151,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 📊 Metrics Endpoints
+## Metrics Endpoints
 
 ### Get Latest Metrics
 ```
@@ -228,7 +228,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 🔥 Firewall Endpoints
+## Firewall Endpoints
 
 ### List Firewall Rules
 ```
@@ -291,7 +291,7 @@ Authorization: Bearer {token}
 
 ---
 
-## ⚠️ Alert Rule Endpoints
+## Alert Rule Endpoints
 
 ### List Alert Rules
 ```
@@ -376,7 +376,7 @@ Content-Type: application/json
 
 ---
 
-## 📈 Dashboard Endpoints
+## Dashboard Endpoints
 
 ### Get Dashboard Stats
 ```
@@ -419,7 +419,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 👤 Profile Endpoints
+## Profile Endpoints
 
 ### Get Profile
 ```

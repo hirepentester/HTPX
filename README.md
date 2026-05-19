@@ -1,6 +1,6 @@
 # Advanced Server Management System - Complete Setup Guide
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose (Recommended)
@@ -147,43 +147,43 @@ ServerManager/
 └── README.md
 ```
 
-## 📊 Features
+## Features
 
 ### Server Management
-- ✅ Add/remove servers
-- ✅ Real-time status monitoring
-- ✅ SSH-based management
-- ✅ Multiple authentication types
+- Add/remove servers
+- Real-time status monitoring
+- SSH-based management
+- Multiple authentication types
 
 ### Monitoring
-- ✅ CPU, Memory, Disk metrics
-- ✅ Network traffic monitoring
-- ✅ Process count tracking
-- ✅ Load average monitoring
+- CPU, Memory, Disk metrics
+- Network traffic monitoring
+- Process count tracking
+- Load average monitoring
 
 ### Firewall Management
-- ✅ Add/remove firewall rules
-- ✅ Inbound/outbound rules
-- ✅ Enable/disable rules
-- ✅ Protocol management (TCP, UDP, ICMP)
+- Add/remove firewall rules
+- Inbound/outbound rules
+- Enable/disable rules
+- Protocol management (TCP, UDP, ICMP)
 
 ### User Management
-- ✅ Change Linux user passwords
-- ✅ User list per server
-- ✅ Permission management
+- Change Linux user passwords
+- User list per server
+- Permission management
 
 ### Alerting System
-- ✅ Configurable alert rules
-- ✅ Multiple severity levels (Critical, Warning, Info)
-- ✅ Email notifications
-- ✅ Webhook integrations
-- ✅ Real-time alerts
+- Configurable alert rules
+- Multiple severity levels (Critical, Warning, Info)
+- Email notifications
+- Webhook integrations
+- Real-time alerts
 
 ### Dashboard
-- ✅ System overview statistics
-- ✅ Recent alerts
-- ✅ Metric trends
-- ✅ Server status at a glance
+- System overview statistics
+- Recent alerts
+- Metric trends
+- Server status at a glance
 
 ## 🔌 API Endpoints
 
@@ -350,7 +350,7 @@ php artisan migrate
 - Ensure Vite server is running on port 5173
 - Check for port conflicts
 
-## 📝 Logging
+## Logging
 
 Logs are stored in `backend/storage/logs/`
 
