@@ -27,6 +27,14 @@ echo
 
 cd "$DEPLOY_PATH"
 
+cleanup_container() {
+    local container_name="$1"
+    if docker ps -a --format '{{.Names}}' | grep -qx "$container_name"; then
+        echo "Removing stale container: $container_name"
+        docker rm -f "$container_name" >/dev/null 2>&1 || true
+    fi
+}
+
 echo "Fetching latest code from origin/$DEPLOY_BRANCH..."
 git fetch origin "$DEPLOY_BRANCH"
 git checkout "$DEPLOY_BRANCH"
@@ -34,7 +42,16 @@ git reset --hard "origin/$DEPLOY_BRANCH"
 git clean -fd
 
 echo
+echo "Removing any stale containers from previous deploys..."
+cleanup_container "server-manager-app"
+cleanup_container "server-manager-mysql"
+cleanup_container "server-manager-redis"
+cleanup_container "server-manager-websocket"
+cleanup_container "server-manager-nginx"
+
+echo
 echo "Rebuilding containers..."
+"${COMPOSE_CMD[@]}" -f "$COMPOSE_FILE" down --remove-orphans >/dev/null 2>&1 || true
 "${COMPOSE_CMD[@]}" -f "$COMPOSE_FILE" up -d --build --remove-orphans
 
 echo
