@@ -48,3 +48,4 @@ backend/bootstrap/cache/
 frontend/.env.local
 node_modules/
 /backend/vendor
+*.sh
