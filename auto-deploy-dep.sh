@@ -3,7 +3,7 @@
 set -euo pipefail
 
 DEPLOY_PATH="${DEPLOY_PATH:-/opt/server-manager}"
-DEPLOY_BRANCH="${DEPLOY_BRANCH:-dep}"
+DEPLOY_BRANCH="${DEPLOY_BRANCH:-Deploye}"
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.prod.yml}"
 
 if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
