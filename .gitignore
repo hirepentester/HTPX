@@ -49,3 +49,5 @@ frontend/.env.local
 node_modules/
 /backend/vendor
 *.sh
+backend/storage/logs/laravel.log
+/*.log
