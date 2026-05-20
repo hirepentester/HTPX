@@ -51,3 +51,4 @@ node_modules/
 *.sh
 backend/storage/logs/laravel.log
 /*.log
+/backend/.env
